@@ -192,19 +192,6 @@ O **Triumph Architect** seguirá uma arquitetura cliente-servidor, com uma separ
         ```
     * O frontend estará disponível em `http://localhost:3000` (ou outra porta). Certifique-se de que o CORS esteja configurado no backend Java para permitir requisições do frontend durante o desenvolvimento. 🌐
 
-## Próximos Passos e Desafios 🎯
-
-Este projeto é uma jornada de aprendizado e desenvolvimento contínuo. Os principais desafios e focos ao longo do desenvolvimento incluem:
-
-1.  **Modelagem de Dados Robusta:** Criar um modelo de dados que suporte todas as complexidades do gerenciamento de clubes, jogadores e ligas de forma eficiente. 🧩
-2.  **Motor de Simulação Inteligente:** Refinar o motor de simulação para que a tática e os atributos dos jogadores tenham um impacto crível e divertido nos resultados das partidas. 💡
-3.  **UI/UX Intuitiva e Envolvente:** Desenvolver uma interface de usuário que seja fácil de usar, visualmente atraente e que mergulhe o jogador na experiência de gerenciamento. 🎨✨
-4.  **Balanceamento do Jogo:** Ajustar os valores de atributos, a progressão, as recompensas e os preços de transferência para garantir um jogo desafiador, justo e divertido a longo prazo. ⚖️
-5.  **Testes Abrangentes:** Escrever testes unitários e de integração para garantir a funcionalidade e a estabilidade de todas as camadas do sistema. ✅🔍
-
-O **Triumph Architect** é um projeto ambicioso, mas com dedicação e paixão, ele se tornará um portfólio impressionante e uma fonte de muito aprendizado. ⭐
-
----
 
 **Autor:** Guilherme Deutsch Andrade 🧑‍💻
 **Licença:** MIT 📄
