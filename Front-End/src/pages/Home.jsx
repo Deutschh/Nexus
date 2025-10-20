@@ -39,7 +39,7 @@ function App() {
             </div>
             <div className="relative z-20 flex flex-col items-center justify-center w-full h-full">
               {/* É AQUI QUE VOCÊ COLOCA SEU CONTEÚDO */}
-              <div className=" w-11/12 h-11/12 bg-inherit  shadow-[inset_0px_0px_15px_rgba(0,0,0,0.3)] rounded-lg  p-3">
+              <div className=" w-11/12 h-11/12 rounded-lg p-3">
                 <div className="grid grid-cols-5 grid-rows-5 gap-4 bag-red-100 h-full">
                   <div className="col-span-3 row-span-2 ">
                     <ChartAreaGradient />

@@ -4,6 +4,10 @@
 
 /* 4. (Opcional) Define a fonte padrão para o corpo do site */
 
+.recharts-cartesian-axis-tick-value tspan {
+  fill: #e4e4e7cc !important;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

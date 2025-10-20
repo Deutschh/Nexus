@@ -20,7 +20,7 @@ import {
 export const description = "An area chart with gradient fill"
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
+  { month: "January", desktop: 186, mobile: 80, color: "white"},
   { month: "February", desktop: 305, mobile: 200 },
   { month: "March", desktop: 237, mobile: 120 },
   { month: "April", desktop: 73, mobile: 190 },
@@ -65,6 +65,7 @@ export function ChartAreaGradient() {
               axisLine={false}
               tickMargin={8}
               tickFormatter={(value) => value.slice(0, 3)}
+              tick={{fill: "#e4e4e7cc"}}
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <defs>
@@ -72,24 +73,24 @@ export function ChartAreaGradient() {
                 <stop
                   offset="35%"
                   stopColor="#8A2BE2"
-                  stopOpacity={0.8}
+                  stopOpacity={1}
                 />
                 <stop
                   offset="95%"
                   stopColor="#8A2BE2"
-                  stopOpacity={0.1}
+                  stopOpacity={0.3}
                 />
               </linearGradient>
               <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
                   stopColor="var(--color-mobile)"
-                  stopOpacity={0.8}
+                  stopOpacity={1}
                 />
                 <stop
                   offset="95%"
                   stopColor="var(--color-mobile)"
-                  stopOpacity={0.1}
+                  stopOpacity={0.3}
                 />
               </linearGradient>
             </defs>
