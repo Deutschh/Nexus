@@ -1,0 +1,60 @@
+import { useState } from "react";
+import Iridescence from "../components/Iridescence.jsx";
+
+function App() {
+  return (
+    <div className="w-full h-[2000px]">
+      <div className="w-full flex h-screen justify-between">
+        <div className="w-1/2 flex flex-col">
+          <div className="text-4xl p-3 font-display text-foreground">
+            ZenFlow
+          </div>
+          <div className="flex flex-col justify-center items-center gap-4 bg-ared-400 my-auto w-5/6">
+            <div className="text-foreground text-7xl font-display text-left mx-24 bg-gareen-300 justify-around w-5/6">
+              Menos desperdício <br /> mais lucro
+            </div>
+            <div className="font-sans text-xl mx-24 bg-balue-300 w-5/6">
+              Conecte seu sistema de vendas, defina suas fichas técnicas e deixe
+              nossa IA gerar as sugestões de compra ideais. Foque no
+              crescimento, não nas planilhas.
+            </div>
+            <button
+              className="w-52 rounded-3xl mt-2 h-12 text-lg bg-indigo-600 border-2 border-indigo-600 text-white items-center justify-center flex font-sans font-semibold hover:bg-inherit
+             hover:text-indigo-700 hover:border-indtext-indigo-700 cursor-pointer transition-all duration-700"
+            >
+              Comece agora
+            </button>
+          </div>
+        </div>
+        <div className="w-5/12 ">
+          <div className="relative w-full h-screen bg-raed-500 rounded-s-3xl overflow-hidden shadow-[-16px_0px_26px_rgba(0,0,0,0.4)]">
+            <div className="absolute inset-0 z-10">
+              <Iridescence
+                color={[0.5, 0.6, 0.8]}
+                mouseReact={true}
+                amplitude={0.05}
+                speed={0.8}
+              />
+            </div>
+            <div className="relative z-20 flex flex-col items-center justify-center w-full h-full">
+              {/* É AQUI QUE VOCÊ COLOCA SEU CONTEÚDO */}
+              <div className=" w-11/12 h-9/12 bg-white/1 border border-zinc-500/40 shadow-[inset_0px_0px_15px_rgba(0,0,0,0.3)] rounded-lg backdrop-blur-2xl p-2">
+                <div className="grid grid-cols-5 grid-rows-5 gap-4 bg-red-100 h-full">
+                  <div className="col-span-3 row-span-2 bg-red-200">
+                    1
+                  </div>
+                  <div className="col-span-2 row-span-2 col-start-4 bg-red-300">2</div>
+                  <div className="col-span-5 row-span-2 row-start-3 bg-red-400">3</div>
+                  <div className="col-span-2 row-start-5 bg-red-500">4</div>
+                  <div className="col-span-3 col-start-3 row-start-5 bg-red-600">5</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
