@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Iridescence from "../components/Iridescence.jsx";
+import { ChartAreaGradient }  from "../components/grafico.jsx";
 
 function App() {
   return (
@@ -38,15 +39,15 @@ function App() {
             </div>
             <div className="relative z-20 flex flex-col items-center justify-center w-full h-full">
               {/* É AQUI QUE VOCÊ COLOCA SEU CONTEÚDO */}
-              <div className=" w-11/12 h-9/12 bg-white/1 border border-zinc-500/40 shadow-[inset_0px_0px_15px_rgba(0,0,0,0.3)] rounded-lg backdrop-blur-2xl p-2">
-                <div className="grid grid-cols-5 grid-rows-5 gap-4 bg-red-100 h-full">
-                  <div className="col-span-3 row-span-2 bg-red-200">
-                    1
+              <div className=" w-11/12 h-11/12 bg-inherit  shadow-[inset_0px_0px_15px_rgba(0,0,0,0.3)] rounded-lg  p-3">
+                <div className="grid grid-cols-5 grid-rows-5 gap-4 bag-red-100 h-full">
+                  <div className="col-span-3 row-span-2 ">
+                    <ChartAreaGradient />
                   </div>
-                  <div className="col-span-2 row-span-2 col-start-4 bg-red-300">2</div>
-                  <div className="col-span-5 row-span-2 row-start-3 bg-red-400">3</div>
-                  <div className="col-span-2 row-start-5 bg-red-500">4</div>
-                  <div className="col-span-3 col-start-3 row-start-5 bg-red-600">5</div>
+                  <div className="col-span-2 row-span-2 col-start-4 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
+                  <div className="col-span-5 row-span-2 row-start-3 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
+                  <div className="col-span-2 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
+                  <div className="col-span-3 col-start-3 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
                 </div>
               </div>
             </div>
