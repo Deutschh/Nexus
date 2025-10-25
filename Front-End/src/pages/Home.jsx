@@ -2,6 +2,7 @@ import { useState } from "react";
 import Iridescence from "../components/Iridescence.jsx";
 import { ChartAreaGradient } from "../components/grafico.jsx";
 import { SugestoesCarrossel } from "../components/SugestoesCarrossel.jsx";
+import { AlertaDashboard } from "../components/AlertaDashboard.jsx";
 
 function App() {
   return (
@@ -51,40 +52,7 @@ function App() {
                     </div>
                   </div>
                   <div className="col-span-5 row-span-2 row-start-3 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg">
-                    <div className="w-full h-full flex justify-between">
-                      <div className="w-1/2 h-full flex flex-col p-3">
-                        <div className="text-neutral-200 text-xl font-semibold">
-                          Alertas
-                        </div>
-                        <div className="flex flex-col w-full h-11/12 mt-6 gap-y-4">
-                          <div className="w-full h-3/11  rounded-4xl flex bg-zinc-900/25 border-2 border-zinc-900/0 hover:bg-zinc-300/20 cursor-pointer transition-all duration-700">
-                            <div className="text-green-400 text-4xl my-auto font-extrabold px-3.5 py-0.5 ml-1">
-                              !
-                            </div>
-                            <div className="text-zinc-200/80 my-auto text-lg">
-                              Leite acaba em dois dias
-                            </div>
-                          </div>
-                          <div className="w-full h-3/11  rounded-4xl flex bg-zinc-900/25 border-2 border-zinc-900/0 hover:bg-zinc-300/20 cursor-pointer transition-all duration-700">
-                            <div className="text-yellow-400 text-4xl my-auto font-extrabold px-3.5 py-0.5 ml-1">
-                              !
-                            </div>
-                            <div className="text-zinc-200/80 my-auto text-lg">
-                              Risco no estoque de farinha
-                            </div>
-                          </div>
-                          <div className="w-full h-3/11  rounded-4xl flex bg-zinc-900/25 border-2 border-zinc-900/0 hover:bg-zinc-300/20 cursor-pointer transition-all duration-700">
-                            <div className="text-red-400 text-4xl my-auto font-extrabold px-3.5 py-0.5 ml-1">
-                              !
-                            </div>
-                            <div className="text-zinc-200/80 my-auto text-lg">
-                              Quebra de estoque detectada
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="w-1/2 h-full bg-blue-200"></div>
-                    </div>
+                      <AlertaDashboard />
                   </div>
                   <div className="col-span-2 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
                   <div className="col-span-3 col-start-3 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
