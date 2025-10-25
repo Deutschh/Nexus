@@ -112,6 +112,7 @@
   --destructive: oklch(0.63 0.22 28.57); /* Red 500 */
   --warning: oklch(0.75 0.16 77.94); /* Amber 500 - Nova */
   --success: oklch(0.73 0.19 145.4); /* Green 500 - Nova */
+  --ideias: oklch(#8A2BE2); /* Cor personalizada para ideias */
 }
 
 .dark {

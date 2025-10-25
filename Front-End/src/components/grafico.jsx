@@ -20,21 +20,21 @@ import {
 export const description = "An area chart with gradient fill"
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80, color: "white"},
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { month: "Janeiro", Realizadas: 186, Esperadas: 80, color: "white"},
+  { month: "Fevereiro", Realizadas: 305, Esperadas: 200 },
+  { month: "Março", Realizadas: 237, Esperadas: 120 },
+  { month: "Abril", Realizadas: 73, Esperadas: 190 },
+  { month: "Maio", Realizadas: 209, Esperadas: 130 },
+  { month: "Junho", Realizadas: 214, Esperadas: 140 },
 ]
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "realizadas",
     color: "var(--chart-1)",
   },
   mobile: {
-    label: "Mobile",
+    label: "esperadas",
     color: "var(--chart-2)",
   },
 };
@@ -45,7 +45,7 @@ export function ChartAreaGradient() {
       <CardHeader>
         <CardTitle className="text-neutral-200">Padaria da Ana</CardTitle>
         <CardDescription className="text-zinc-200/80">
-          Vendas nos ultimos 6 meses
+          Vendas esperadas e realizadas nos ultimos 6 meses
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -69,7 +69,7 @@ export function ChartAreaGradient() {
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <defs>
-              <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="fillRealizadas" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="35%"
                   stopColor="#8A2BE2"
@@ -81,7 +81,7 @@ export function ChartAreaGradient() {
                   stopOpacity={0.3}
                 />
               </linearGradient>
-              <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="fillEsperadas" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
                   stopColor="var(--color-mobile)"
@@ -95,17 +95,17 @@ export function ChartAreaGradient() {
               </linearGradient>
             </defs>
             <Area
-              dataKey="mobile"
+              dataKey="Esperadas"
               type="natural"
-              fill="url(#fillMobile)"
+              fill="url(#fillEsperadas)"
               fillOpacity={0.4}
               stroke="var(--color-mobile)"
               stackId="a"
             />
             <Area
-              dataKey="desktop"
+              dataKey="Realizadas"
               type="natural"
-              fill="url(#fillDesktop)"
+              fill="url(#fillRealizadas)"
               fillOpacity={0.4}
               stroke="#8A2BE2"
               stackId="a"

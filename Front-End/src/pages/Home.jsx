@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Iridescence from "../components/Iridescence.jsx";
-import { ChartAreaGradient }  from "../components/grafico.jsx";
+import { ChartAreaGradient } from "../components/grafico.jsx";
+import { SugestoesCarrossel } from "../components/SugestoesCarrossel.jsx";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
               crescimento, não nas planilhas.
             </div>
             <button
-              className="w-52 rounded-3xl mt-2 h-12 text-lg bg-indigo-600 border-2 border-indigo-600 text-white items-center justify-center flex font-sans font-semibold hover:bg-inherit
+              className="w-52 rounded-3xl mt-2 h-12.5 text-lg bg-indigo-600 border-2 border-indigo-600 text-white items-center justify-center flex font-sans font-semibold hover:bg-inherit
              hover:text-indigo-700 hover:border-indtext-indigo-700 cursor-pointer transition-all duration-700"
             >
               Comece agora
@@ -44,7 +45,11 @@ function App() {
                   <div className="col-span-3 row-span-2 ">
                     <ChartAreaGradient />
                   </div>
-                  <div className="col-span-2 row-span-2 col-start-4 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
+                  <div className="col-span-2 row-span-2 col-start-4 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg">
+                  <div className="w-full h-full flex">
+                    <SugestoesCarrossel />
+                    </div>
+                  </div>
                   <div className="col-span-5 row-span-2 row-start-3 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
                   <div className="col-span-2 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
                   <div className="col-span-3 col-start-3 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
