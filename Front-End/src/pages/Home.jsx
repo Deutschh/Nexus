@@ -5,20 +5,21 @@ import { SugestoesCarrossel } from "../components/SugestoesCarrossel.jsx";
 import { AlertaDashboard } from "../components/AlertaDashboard.jsx";
 import { TarefasCard } from "../components/TarefasCard.jsx";
 import { LucroCard } from "../components/LucroCard.jsx";
+import { ScrollTimeline } from "../components/ScrollTimeline.jsx";
 
 function App() {
   return (
-    <div className="w-full h-[2000px]">
+    <div className="w-full bg-slate-200/20 flex flex-col">
       <div className="w-full flex h-screen justify-between">
         <div className="w-1/2 flex flex-col">
-          <div className="text-4xl p-3 font-display text-foreground">
+          <div className="text-4xl p-4 font-display text-foreground">
             ZenFlow
           </div>
-          <div className="flex flex-col justify-center items-center gap-4 bg-ared-400 my-auto w-5/6">
-            <div className="text-foreground text-7xl font-display text-left mx-24 bg-gareen-300 justify-around w-5/6">
+          <div className="flex flex-col justify-center items-center gap-4 my-auto w-5/6">
+            <div className="text-foreground text-7xl font-display text-left mx-24 justify-around w-5/6">
               Menos desperdício <br /> mais lucro
             </div>
-            <div className="font-sans text-xl mx-24 bg-balue-300 w-5/6">
+            <div className="font-sans text-xl mx-24 w-5/6">
               Conecte seu sistema de vendas, defina suas fichas técnicas e deixe
               nossa IA gerar as sugestões de compra ideais. Foque no
               crescimento, não nas planilhas.
@@ -32,7 +33,7 @@ function App() {
           </div>
         </div>
         <div className="w-5/12 ">
-          <div className="relative w-full h-screen bg-raed-500 rounded-s-3xl overflow-hidden shadow-[-16px_0px_26px_rgba(0,0,0,0.4)]">
+          <div className="relative w-full h-screen rounded-s-3xl overflow-hidden shadow-[-16px_12px_26px_rgba(0,0,0,0.4)]">
             <div className="absolute inset-0 z-10">
               <Iridescence
                 color={[0.5, 0.6, 0.8]}
@@ -68,6 +69,10 @@ function App() {
           </div>
         </div>
       </div>
+      <div className="w-full py-10">
+        <ScrollTimeline />
+      </div>
+      <div className="bg-red-300 w-full h-screen"></div>
     </div>
   );
 }
