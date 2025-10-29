@@ -3,6 +3,8 @@ import Iridescence from "../components/Iridescence.jsx";
 import { ChartAreaGradient } from "../components/grafico.jsx";
 import { SugestoesCarrossel } from "../components/SugestoesCarrossel.jsx";
 import { AlertaDashboard } from "../components/AlertaDashboard.jsx";
+import { TarefasCard } from "../components/TarefasCard.jsx";
+import { LucroCard } from "../components/LucroCard.jsx";
 
 function App() {
   return (
@@ -52,10 +54,14 @@ function App() {
                     </div>
                   </div>
                   <div className="col-span-5 row-span-2 row-start-3 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg">
-                      <AlertaDashboard />
+                    <AlertaDashboard />
                   </div>
-                  <div className="col-span-2 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
-                  <div className="col-span-3 col-start-3 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg"></div>
+                  <div className="col-span-2 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg">
+                    <TarefasCard />
+                  </div>
+                  <div className="col-span-3 col-start-3 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg hover:scale-[1.045] transition-transform duration-500 cursor-pointer">
+                  <LucroCard />
+                  </div>
                 </div>
               </div>
             </div>
