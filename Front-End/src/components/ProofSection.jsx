@@ -122,7 +122,7 @@ export function ProofSection() {
   });
 
   // --- LÓGICA DE ANIMAÇÃO (Sem alteração) ---
-  const opacityTitulo = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
+  const opacityTitulo = useTransform(scrollYProgress, [0, 0.0], [0, 1]);
   const yTitulo = useTransform(scrollYProgress, [0.05, 0.2], [50, 0]);
   const opacityCard1 = useTransform(scrollYProgress, [0.2, 0.35], [0, 1]);
   const yCard1 = useTransform(scrollYProgress, [0.2, 0.35], [50, 0]);
@@ -190,16 +190,16 @@ export function ProofSection() {
                 <ul className="mt-4 space-y-5 text-gray-400 ml-16 text-lg font-bold">
                   {/* ... (lista) ... */}
                   <li className="flex items-center gap-2">
-                    ✅ Dados em tempo real, direto do PDV
+                    ✔️ Dados em tempo real, direto do PDV
                   </li>
                   <li className="flex items-center gap-2">
-                    ✅ Alertas automáticos de estoque
+                    ✔️ Alertas automáticos de estoque
                   </li>
                   <li className="flex items-center gap-2">
-                    ✅ Previsão de vendas com IA
+                    ✔️ Previsão de vendas com IA
                   </li>
                   <li className="flex items-center gap-2">
-                    ✅ Dúvidas? Pergunte ao nosso assistente IA
+                    ✔️ Dúvidas? Pergunte ao nosso assistente IA
                   </li>
                 </ul>
               </div>

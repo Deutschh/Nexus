@@ -7,11 +7,14 @@ import { TarefasCard } from "../components/TarefasCard.jsx";
 import { LucroCard } from "../components/LucroCard.jsx";
 import { ScrollTimeline } from "../components/ScrollTimeline.jsx";
 import { ProofSection } from "../components/ProofSection.jsx";
+import { ScrollIndicator } from "../components/ScrollIndicator.jsx";
+import { PricingSection } from "../components/PricingSection.jsx";
 
 function App() {
   return (
     <div className="w-full bg-slate-200/20 flex flex-col">
-      <div className="w-full flex h-screen justify-between">
+      <ScrollIndicator />
+      <div id="hero" className="w-full flex h-screen justify-between">
         <div className="w-1/2 flex flex-col">
           <div className="text-4xl p-4 font-display text-foreground">
             ZenFlow
@@ -70,13 +73,16 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="w-full py-10">
+      <div id="como-funciona" className="w-full py-10">
         <ScrollTimeline />
       </div>
-      <div className="w-full bg-pinka-200">
+      <div id="prova-social" className="w-full bg-pinka-200">
         <ProofSection />
       </div>
-      <div className="w-full bg-amber-100 h-screen"></div>
+      <div id="planos" className="w-full h-screen">
+        <PricingSection />
+      </div>
+      <div id="contato" className="h-screen w-full bg-red-400"></div>
     </div>
   );
 }
