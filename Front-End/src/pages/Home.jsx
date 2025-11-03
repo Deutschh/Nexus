@@ -6,6 +6,7 @@ import { AlertaDashboard } from "../components/AlertaDashboard.jsx";
 import { TarefasCard } from "../components/TarefasCard.jsx";
 import { LucroCard } from "../components/LucroCard.jsx";
 import { ScrollTimeline } from "../components/ScrollTimeline.jsx";
+import { ProofSection } from "../components/ProofSection.jsx";
 
 function App() {
   return (
@@ -72,7 +73,10 @@ function App() {
       <div className="w-full py-10">
         <ScrollTimeline />
       </div>
-      <div className="bg-red-300 w-full h-screen"></div>
+      <div className="w-full bg-pinka-200">
+        <ProofSection />
+      </div>
+      <div className="w-full bg-amber-100 h-screen"></div>
     </div>
   );
 }
