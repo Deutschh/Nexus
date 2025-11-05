@@ -9,6 +9,8 @@ import { ScrollTimeline } from "../components/ScrollTimeline.jsx";
 import { ProofSection } from "../components/ProofSection.jsx";
 import { ScrollIndicator } from "../components/ScrollIndicator.jsx";
 import { PricingSection } from "../components/PricingSection.jsx";
+import { FinalCTA } from "@/components/FinalCTA.jsx";
+import { Footer } from "@/components/Footer.jsx";
 
 function App() {
   return (
@@ -65,7 +67,7 @@ function App() {
                     <TarefasCard />
                   </div>
                   <div className="col-span-3 col-start-3 row-start-5 bg-zinc-900/25 border-none shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-lg hover:scale-[1.045] transition-transform duration-500 cursor-pointer">
-                  <LucroCard />
+                    <LucroCard />
                   </div>
                 </div>
               </div>
@@ -82,7 +84,10 @@ function App() {
       <div id="planos" className="w-full h-screen">
         <PricingSection />
       </div>
-      <div id="contato" className="h-screen w-full bg-red-400"></div>
+      <div id="contato" className="h-screen w-full mt-12">
+        <FinalCTA />
+        <Footer />
+      </div>
     </div>
   );
 }
