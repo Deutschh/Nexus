@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -116,12 +117,14 @@ export function PricingSection() {
                 </ul>
               </CardContent>
               <CardFooter>
+                <Link to="/login?plano=basico" className="w-8/12 mx-auto">
                 <Button
                   variant="outline"
-                  className="cursor-pointer w-8/12 rounded-xl text-lg font-sans font-semibold mb-8 h-13 mx-auto border-2 border-gray-300 transition-all duration-700 bg-gray-300 text-foreground hover:border-indigo-600 hover:text-zinc-300 hover:bg-indigo-600"
+                  className="cursor-pointer w-full rounded-xl text-lg font-sans font-semibold mb-8 h-13 mx-auto border-2 border-gray-300 transition-all duration-700 bg-gray-300 text-foreground hover:border-indigo-600 hover:text-zinc-300 hover:bg-indigo-600"
                 >
                   Começar
                 </Button>
+                </Link>
               </CardFooter>
             </Card>
           </motion.div>
@@ -181,9 +184,11 @@ export function PricingSection() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-8/12 rounded-xl text-lg font-sans font-semibold mb-8 h-13 mx-auto border-2 border-indigo-600 transition-all duration-700 bg-indigo-600 text-slate-200 hover:text-indigo-600 hover:bg-slate-200">
+                  <Link to="/login?plano=pro" className="w-8/12 mx-auto">
+                  <Button className="w-full rounded-xl text-lg font-sans font-semibold mb-8 h-13 mx-auto border-2 border-indigo-600 transition-all duration-700 bg-indigo-600 text-slate-200 hover:text-indigo-600 hover:bg-slate-200">
                     Começar Teste Grátis
                   </Button>
+                  </Link>
                 </CardFooter>
               </Card>
             </BackgroundGradient>
@@ -222,12 +227,14 @@ export function PricingSection() {
                 </ul>
               </CardContent>
               <CardFooter>
+                <a href="#contato" className="w-8/12 mx-auto">
                 <Button
                   variant="outline"
-                  className="cursor-pointer w-8/12 rounded-xl text-lg font-sans font-semibold mb-8 h-13 mx-auto border-2 border-gray-300 transition-all duration-700 bg-gray-300 text-foreground hover:border-indigo-600 hover:text-zinc-300 hover:bg-indigo-600"
+                  className="cursor-pointer w-full rounded-xl text-lg font-sans font-semibold mb-8 h-13 mx-auto border-2 border-gray-300 transition-all duration-700 bg-gray-300 text-foreground hover:border-indigo-600 hover:text-zinc-300 hover:bg-indigo-600"
                 >
                   Entrar em Contato
                 </Button>
+                </a>
               </CardFooter>
             </Card>
           </motion.div>

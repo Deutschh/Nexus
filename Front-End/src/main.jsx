@@ -1,11 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import Home from './pages/Home.jsx'
+// Em: src/main.jsx
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Home />
-  </StrictMode>,
-)
+import React from "react"; // (Boa prática importar o React)
+import { createRoot } from "react-dom/client"; // <-- Sua importação correta
+import "./index.css";
+import App from "./App.jsx";
+import { BrowserRouter } from "react-router-dom";
+
+// CORREÇÃO: Remova o 'ReactDOM.'
+// Use a função 'createRoot' diretamente.
+createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);

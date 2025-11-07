@@ -1,10 +1,40 @@
-import { useState } from 'react'
+// Em: src/App.jsx (Este é um ARQUIVO NOVO)
 
+import React from 'react';
+import { Routes, Route, Outlet } from 'react-router-dom';
+import  Home  from './pages/Home.jsx'; 
+import { Login } from './pages/Login.jsx';
+import { Planos } from './pages/Planos.jsx';
+
+// (Eventualmente, podemos adicionar Navbar/Footer aqui)
+function Layout() {
+  return (
+    <div>
+      {/* <Navbar /> */}
+      <Outlet /> {/* As páginas (Home, Login, etc.) serão renderizadas aqui */}
+    </div>
+  );
+}
 
 function App() {
   return (
-  <div className="text-4xl flex justify-center items-center text-orange-500 font-bold mt-96">Começo do ZenFlow!</div>
-  )
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        {/* Rota 1: A Home Page */}
+        <Route index element={<Home />} />
+        
+        {/* Rota 2: Login/Cadastro */}
+        <Route path="login" element={<Login />} />
+        
+        {/* Rota 3: Planos */}
+        <Route path="planos" element={<Planos />} />
+
+        {/* (Futuramente) Rota 4: Pagamento */}
+        {/* <Route path="pagamento" element={<Pagamento />} /> */}
+
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;

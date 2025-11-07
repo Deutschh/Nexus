@@ -11,8 +11,9 @@ import { ScrollIndicator } from "../components/ScrollIndicator.jsx";
 import { PricingSection } from "../components/PricingSection.jsx";
 import { FinalCTA } from "@/components/FinalCTA.jsx";
 import { Footer } from "@/components/Footer.jsx";
+import { Link } from "react-router-dom";
 
-function App() {
+function Home() {
   return (
     <div className="w-full bg-slate-200/20 flex flex-col">
       <ScrollIndicator />
@@ -30,12 +31,14 @@ function App() {
               nossa IA gerar as sugestões de compra ideais. Foque no
               crescimento, não nas planilhas.
             </div>
+            <Link to="/Login">
             <button
               className="w-52 rounded-3xl mt-2 h-12.5 text-lg bg-indigo-600 border-2 border-indigo-600 text-white items-center justify-center flex font-sans font-semibold hover:bg-inherit
              hover:text-indigo-700 hover:border-indtext-indigo-700 cursor-pointer transition-all duration-700"
             >
               Comece agora
             </button>
+            </Link>
           </div>
         </div>
         <div className="w-5/12 ">
@@ -92,4 +95,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
