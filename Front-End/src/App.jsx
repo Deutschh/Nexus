@@ -26,6 +26,8 @@ function App() {
         {/* Rota 2: Login/Cadastro */}
         <Route path="login" element={<Login />} />
         
+        <Route path="Home" element={<Home />} />
+
         {/* Rota 3: Planos */}
         <Route path="planos" element={<Planos />} />
 
