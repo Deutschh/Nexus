@@ -14,9 +14,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Iridescence from "../components/Iridescence.jsx"; // Fundo animado
-import { CadastroWizard } from "../components/CadastroWizard.jsx"; // Nosso wizard!
+import { StepperCadastro} from "../components/StepperCadastro.jsx"; 
 import { Link } from "react-router-dom";
 import { Checkbox } from "@/components/ui/checkbox.jsx";
+
 
 export function Login() {
   return (
@@ -53,7 +54,7 @@ export function Login() {
 
         {/* --- ABA DE LOGIN --- */}
         <TabsContent value="login">
-          <Card className="bg-slate-200/20 h-11/12 text-foreground font-sans border-none shadow-none pl-3">
+          <Card className="bg-slate-200/20 h-11/12 text-foreground font-sans border-none shadow-none pl-10">
             <CardHeader>
               <CardTitle className={"text-2xl text-foreground"}>
                 Bem-vindo de volta!
@@ -74,7 +75,7 @@ export function Login() {
                   id="email-login"
                   type="email"
                   className={"w-1/2 h-12 shadow-xl border-1 border-zinc-400/50"}
-                  placeholder="padariadaAna@gmail.com"
+                  placeholder="anapadaria@gmail.com"
                 />
               </div>
               <div className="space-y-2">
@@ -91,7 +92,7 @@ export function Login() {
                 />
               </div>
             </CardContent>
-            <div className="text-gray-500 font-semibold w-1/2 bg-reda-600 pl-16 text-lg mt-2   flex">
+            <div className="text-gray-500 font-semibold w-1/2 bg-reda-600 pl-10 text-lg mt-2   flex">
               <Checkbox className={"border-gray-500 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600 mr-2 w-5 h-5 mt-1"} /> Mantenha-me conectado
             </div>
             <CardFooter className="flex flex-col gap-3 w-1/2 mt-2 ">
@@ -124,16 +125,16 @@ export function Login() {
 
         {/* --- ABA DE CADASTRO --- */}
         <TabsContent value="cadastro">
-          <Card className="bg-foreground/80 backdrop-blur-sm border-zinc-700 text-white">
+          <Card className="bg-slate-200/20 shadow-none border-none text-white">
             <CardHeader>
-              <CardTitle>Crie sua conta</CardTitle>
-              <CardDescription className="text-gray-400">
+              <CardTitle className={"text-2xl text-foreground"}>Crie sua conta</CardTitle>
+              <CardDescription className="text-gray-400 text-lg">
                 Siga os passos para começar a usar o ZenFlow.
               </CardDescription>
             </CardHeader>
-            <CardContent className="min-h-[350px]">
+            <CardContent className=" h-full">
               {/* O WIZARD ENTRA AQUI! */}
-              <CadastroWizard />
+              <StepperCadastro/>
             </CardContent>
           </Card>
         </TabsContent>
