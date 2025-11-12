@@ -1,6 +1,7 @@
 // Em: src/pages/Login.jsx
 
 import React from "react";
+import { Link, useNavigate } from "react-router-dom"; // Importa o useNavigate
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,24 +12,99 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input"; // Nosso input de senha
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Iridescence from "../components/Iridescence.jsx"; // Fundo animado
-import { StepperCadastro} from "../components/StepperCadastro.jsx"; 
-import { Link } from "react-router-dom";
+import Iridescence from "../components/Iridescence.jsx";
+import { StepperCadastro } from "../components/StepperCadastro.jsx"; // Nome correto do seu wizard
 import { Checkbox } from "@/components/ui/checkbox.jsx";
 
+// Importa as ferramentas de formulário
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+// Definimos as "regras" (Schema) para o login
+const loginSchema = z.object({
+  email: z
+    .string()
+    .trim()
+    .min(1, { message: "O email é obrigatório." })
+    .email({ message: "Por favor, insira um email válido." }),
+  password: z
+    .string()
+    .trim()
+    .min(1, { message: "A senha é obrigatória." }),
+  remember: z.boolean().default(false), // Para o "Mantenha-me conectado"
+});
 
 export function Login() {
+  const navigate = useNavigate(); // Hook para nos redirecionar
+
+  // Configuramos o 'react-hook-form'
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(loginSchema),
+  });
+
+  // A função que é chamada QUANDO o formulário é válido
+  const onSubmitLogin = async (data) => {
+    // 'data' contém { email, password, remember }
+    console.log("Enviando dados de Login:", data);
+
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert(result.error || "Erro ao fazer login. Verifique suas credenciais.");
+        return;
+      }
+
+      // SUCESSO! Agora salvamos o token
+      console.log("Login realizado!", result.token);
+
+      // Lógica do "Mantenha-me Conectado"
+      if (data.remember) {
+        localStorage.setItem("authToken", result.token);
+      } else {
+        sessionStorage.setItem("authToken", result.token);
+      }
+      
+      // (Futuramente, vamos checar se ele tem plano e redirecionar para /dashboard)
+      // Por agora, vamos para a página de planos
+      navigate("/planos");
+
+    } catch (error) {
+      console.error("Erro de rede:", error);
+      alert(
+        "Não foi possível conectar ao servidor. Verifique se o backend está rodando."
+      );
+    }
+  };
+  
   return (
-    // Container da página inteira
+    // Seu layout (sem alteração)
     <div className="w-full h-screen flex justify-between bg-slate-200 relative ">
-      <Link to="/Home">
+      <Link to="/">
         <div className="text-4xl p-4 font-display text-foreground absolute">
           ZenFlow
         </div>
       </Link>
-      {/* Container das Abas (z-10 para ficar sobre o fundo) */}
+      
       <Tabs
         defaultValue="login"
         className="bg-slate-200/20 w-60/100 pr-16 pl-12 flex my-auto bg-paink-400 flex-col h-2/3"
@@ -54,96 +130,116 @@ export function Login() {
 
         {/* --- ABA DE LOGIN --- */}
         <TabsContent value="login">
-          <Card className="bg-slate-200/20 h-11/12 text-foreground font-sans border-none shadow-none pl-10">
-            <CardHeader>
-              <CardTitle className={"text-2xl text-foreground"}>
-                Bem-vindo de volta!
-              </CardTitle>
-              <CardDescription className="text-gray-400 text-lg">
-                Faça Login para acessar o Dashboard e muito mais.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 mt-6">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="email-login"
-                  className="text-lg text-gray-500 font-sans"
-                >
-                  Email
-                </Label>
-                <Input
-                  id="email-login"
-                  type="email"
-                  className={"w-1/2 h-12 shadow-xl border-1 border-zinc-400/50"}
-                  placeholder="anapadaria@gmail.com"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="password-login"
-                  className="text-lg text-gray-500 font-sans"
-                >
-                  Senha
-                </Label>
-                <Input
-                  id="password-login"
-                  className={"w-1/2 h-12 shadow-xl border-1 border-zinc-400/50"}
-                  type="password"
-                />
-              </div>
-            </CardContent>
-            <div className="text-gray-500 font-semibold w-1/2 bg-reda-600 pl-10 text-lg mt-2   flex">
-              <Checkbox className={"border-gray-500 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600 mr-2 w-5 h-5 mt-1"} /> Mantenha-me conectado
-            </div>
-            <CardFooter className="flex flex-col gap-3 w-1/2 mt-2 ">
-              <Button
-                className="w-2/5 rounded-2xl h-12 text-lg bg-indigo-600 border-2 border-indigo-600 text-white items-center justify-center flex font-sans font-semibold hover:bg-inherit
-             hover:text-indigo-700 hover:border-indtext-indigo-700 cursor-pointer transition-all duration-700"
-              >
-                Entrar
-              </Button>
-              <Button
-                variant="link"
-                size="sm"
-                className="text-gray-400 decoration-none cursor-pointer"
-              >
-                Esqueceu sua senha?
-              </Button>
-              <div className="flex bg-read-400 w-2/3 h-8 justify-between mt-2">
-                <div className="w-41/100 bg-zinc-400/50 h-0.5 my-auto"></div>
-                <div className="text-xl w-1/12 my-auto font-sans mb-2 text-gray-600 font-semibold">
-                  ou
+          {/* ADICIONADO: tag <form> com handleSubmit */}
+          <form onSubmit={handleSubmit(onSubmitLogin)}>
+            <Card className="bg-slate-200/20 h-11/12 text-foreground font-sans border-none shadow-none pl-3">
+              <CardHeader>
+                <CardTitle className={"text-2xl text-foreground"}>
+                  Bem-vindo de volta!
+                </CardTitle>
+                <CardDescription className="text-gray-400 text-lg">
+                  Faça Login para acessar o Dashboard e muito mais.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4 mt-6">
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="email-login"
+                    className="text-lg text-gray-500 font-sans"
+                  >
+                    Email
+                  </Label>
+                  <Input
+                    id="email-login"
+                    type="email"
+                    className={"w-1/2 h-12 shadow-xl border-1 border-zinc-400/50"}
+                    placeholder="padariadaAna@gmail.com"
+                    {...register("email")} // ADICIONADO: registro do form
+                  />
+                  {/* ADICIONADO: Mensagem de erro */}
+                  {errors.email && (
+                    <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>
+                  )}
                 </div>
-                <div className="w-41/100 bg-zinc-400/50 h-0.5 my-auto"></div>
+                <div className="space-y-2 w-1/2">
+                  <Label
+                    htmlFor="password-login"
+                    className="text-lg text-gray-500 font-sans"
+                  >
+                    Senha
+                  </Label>
+                  {/* MUDANÇA: Input -> PasswordInput */}
+                  <PasswordInput
+                    id="password-login"
+                    className={"w-full h-12 shadow-xl border-1 border-zinc-400/50 text-foreground text-lg"}
+                    {...register("password")} // ADICIONADO: registro do form
+                  />
+                  {/* ADICIONADO: Mensagem de erro */}
+                  {errors.password && (
+                    <p className="text-red-400 text-sm mt-1">{errors.password.message}</p>
+                  )}
+                </div>
+              </CardContent>
+              <div className="text-gray-500 font-semibold w-1/2 bg-reda-600 pl-16 text-lg mt-2 flex">
+                <Checkbox 
+                  id="remember"
+                  className={"border-gray-500 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600 mr-2 w-5 h-5 mt-1"}
+                  {...register("remember")} // ADICIONADO: registro do form
+                />
+                <Label htmlFor="remember">Mantenha-me conectado</Label>
               </div>
-              <div className="w-2/3 mt-1 h-12 border border-zinc-400 flex items-center justify-center hover:bg-zinc-500/25 transition-all duration-500 cursor-pointer">
-                Fazer login com Google
-              </div>
-            </CardFooter>
-          </Card>
+              <CardFooter className="flex flex-col gap-3 w-1/2 mt-2 ">
+                <Button
+                  type="submit" // ADICIONADO: tipo submit
+                  className="w-2/5 rounded-2xl h-12 text-lg bg-indigo-600 border-2 border-indigo-600 text-white items-center justify-center flex font-sans font-semibold hover:bg-inherit
+                  hover:text-indigo-700 hover:border-indtext-indigo-700 cursor-pointer transition-all duration-700"
+                >
+                  Entrar
+                </Button>
+                {/* RESTAURADO: Seus botões "Esqueci a senha" e "Google" */}
+                <Button
+                  variant="link"
+                  size="sm"
+                  className="text-gray-400 decoration-none cursor-pointer"
+                >
+                  Esqueceu sua senha?
+                </Button>
+                <div className="flex bg-read-400 w-2/3 h-8 justify-between mt-2">
+                  <div className="w-41/100 bg-zinc-400/50 h-0.5 my-auto"></div>
+                  <div className="text-xl w-1/12 my-auto font-sans mb-2 text-gray-600 font-semibold">
+                    ou
+                  </div>
+                  <div className="w-41/100 bg-zinc-400/50 h-0.5 my-auto"></div>
+                </div>
+                <div className="w-2/3 mt-1 h-12 border border-zinc-400 flex items-center justify-center hover:bg-zinc-500/25 transition-all duration-500 cursor-pointer">
+                  Fazer login com Google
+                </div>
+              </CardFooter>
+            </Card>
+          </form>
         </TabsContent>
 
         {/* --- ABA DE CADASTRO --- */}
         <TabsContent value="cadastro">
-          <Card className="bg-slate-200/20 shadow-none border-none text-white">
+          <Card className="bg-slate-200 border-none shadow-none text-white">
             <CardHeader>
               <CardTitle className={"text-2xl text-foreground"}>Crie sua conta</CardTitle>
               <CardDescription className="text-gray-400 text-lg">
                 Siga os passos para começar a usar o ZenFlow.
               </CardDescription>
             </CardHeader>
-            <CardContent className=" h-full">
-              {/* O WIZARD ENTRA AQUI! */}
-              <StepperCadastro/>
+            <CardContent className="min-h-[350px]">
+              <StepperCadastro /> {/* Seu wizard */}
             </CardContent>
           </Card>
         </TabsContent>
       </Tabs>
-      {/* Fundo Animado (igual ao da Home) */}
+      
+      {/* Fundo Animado (sem alteração) */}
       <div className="w-40/100 inset-0 z-0 shadow-[0px_0px_30px_rgba(0,0,0,1)]">
         <Iridescence
           color={[0.5, 0.6, 0.8]}
-          mouseReact={true}
+          mouseReact={false}
           amplitude={0.05}
           speed={0.8}
         />
